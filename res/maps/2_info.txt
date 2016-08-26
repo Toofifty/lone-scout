@@ -1,0 +1,19 @@
+!def a: cave(0, 1)
+!def b: cave(1, 1)
+!def c: cave(0, 2)
+!def d: cave(1, 2)
+
+!def e: cave(0, 0)
+!def f: cave(1, 0)
+
+!def g: cave(2, 0)
+!def h: cave(2, 1)
+!def i: cave(2, 2)
+
+!def j: cave(3, 0)
+!def k: cave(3, 1)
+!def l: cave(3, 2)
+
+!def 0: black(0, 0)
+
+!def #: &cave(0, 4)

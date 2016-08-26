@@ -1,0 +1,45 @@
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                    abab
+                                                                                                    cdcd
+                                                                                              abab
+                             #                                                                cdcd
+                                 ###                                                    abab
+                                                                                        cdcd
+                                       ##                                         abab
+                                                                                  cdcd
+                                     ##                                     abab
+                          ######                                            cdcd
+                        ####                                          abab
+                      #######   #####                                 cdcd
+a                    ### ########  ##                           abab
+c                      ## ##############    ##                  cdcd
+ab                              ####                      abab
+cd                  ####     #            ##              cdcd
+aba                         ### # ##    #  ##       abab
+cdc                                  #      #       cdcd
+abab                                ####      abab
+cdcd                                          cdcd
+ababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab
+cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd
