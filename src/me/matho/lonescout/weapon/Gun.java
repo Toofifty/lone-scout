@@ -84,6 +84,12 @@ public class Gun {
 
     }
 
+    public String getTextureName() {
+
+        return type.texname;
+
+    }
+
 }
 
 enum GunType {

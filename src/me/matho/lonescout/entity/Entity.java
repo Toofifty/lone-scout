@@ -25,7 +25,7 @@ public abstract class Entity extends Box implements Examinable {
      * Set to true to prevent the sprite flipping on the x axis when the velocity
      * is toward the left (-x)
      */
-    private boolean noFlip = false;
+    protected boolean noFlip = false;
     private boolean isFlipped = false;
 
     /* Physics properties */
@@ -94,10 +94,6 @@ public abstract class Entity extends Box implements Examinable {
 
             vy = 0;
             grounded = true;
-
-        } else {
-
-            grounded = false;
 
         }
 

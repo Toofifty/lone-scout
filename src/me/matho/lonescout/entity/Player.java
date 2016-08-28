@@ -1,6 +1,7 @@
 package me.matho.lonescout.entity;
 
 import me.matho.lonescout.client.Resources;
+import me.matho.lonescout.weapon.Gun;
 import org.newdawn.slick.*;
 
 /**
@@ -11,6 +12,9 @@ public class Player extends Entity {
     private float speed = 0.15F;
     private float jumpSpeed = 0.4F;
 
+    private Gun primary;
+    private Gun secondary;
+
     @Override
     public void init() {
 
@@ -20,11 +24,12 @@ public class Player extends Entity {
         w = 16;
         h = 16;
 
-        image = Resources.getSprite("player/pluto/still", 0, 0);
+        image = Resources.getSprite("player/pluto/unarmed/still", 0, 0);
 
-        addAnimation("idle_unarmed", new Animation(Resources.getSpriteSheet("player/pluto/idle_unarmed"), 500));
-        addAnimation("run_unarmed", new Animation(Resources.getSpriteSheet("player/pluto/run_unarmed"), 50));
-        setAnimation("idle_unarmed");
+        addAnimation("unarmed/idle", new Animation(Resources.getSpriteSheet("player/pluto/unarmed/idle"), 500));
+        addAnimation("unarmed/jump", new Animation(Resources.getSpriteSheet("player/pluto/unarmed/jump"), 250));
+        addAnimation("unarmed/run", new Animation(Resources.getSpriteSheet("player/pluto/unarmed/run"), 50));
+        setAnimation("unarmed/idle");
 
     }
 
@@ -49,16 +54,47 @@ public class Player extends Entity {
 
     }
 
-    @Override
-    public void updateAnimation() {
+    public String gunTextureName() {
 
-        if (vx != 0) {
+        if (primary != null) {
 
-            setAnimation("run_unarmed");
+            return primary.getTextureName();
 
         } else {
 
-            setAnimation("idle_unarmed");
+            return "unarmed";
+
+        }
+
+    }
+
+    @Override
+    public void setAnimation(String anim) {
+
+        super.setAnimation(gunTextureName() + "/" + anim);
+
+    }
+
+    @Override
+    public void updateAnimation() {
+
+        System.out.println(grounded);
+
+        if (!grounded) {
+
+            setAnimation("jump");
+
+        } else {
+
+            if (vx != 0) {
+
+                setAnimation("run");
+
+            } else {
+
+                setAnimation("idle");
+
+            }
 
         }
 

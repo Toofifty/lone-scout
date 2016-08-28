@@ -149,8 +149,6 @@ public class World {
 
                         for (int i = 0; i < 16; i++) {
 
-                            System.out.println(sheetX + i);
-
                             tileset.put(tileChar + i, Resources.getSprite("tile/" + sheetName, sheetX + i, sheetY));
                             conChars = conChars + tileChar;
 
