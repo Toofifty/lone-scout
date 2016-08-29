@@ -1,7 +1,7 @@
 package me.matho.lonescout.util;
 
 import me.matho.lonescout.client.Window;
-import me.matho.lonescout.entity.Entity;
+import me.matho.lonescout.sprite.entity.Entity;
 import me.matho.lonescout.world.World;
 
 /**
@@ -11,7 +11,7 @@ public class Camera {
 
     private Entity target;
     private static float ox, oy;
-    private static int scale = 2;
+    private static int scale = 6;
 
     private int cameraSmoothing = 10;
 
@@ -58,13 +58,13 @@ public class Camera {
 
     public int targetX() {
 
-        return target.midX();
+        return target.collider.midX();
 
     }
 
     public int targetY() {
 
-        return target.midY();
+        return target.collider.midY();
 
     }
 

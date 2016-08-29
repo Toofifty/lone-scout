@@ -1,16 +1,18 @@
-package me.matho.lonescout.entity;
+package me.matho.lonescout.sprite.entity;
 
 import me.matho.lonescout.client.Resources;
 import me.matho.lonescout.weapon.Gun;
 import org.newdawn.slick.*;
 
 /**
+ * Player class
+ *
  * Created by alex on 21/08/2016.
  */
 public class Player extends Entity {
 
-    private float speed = 0.15F;
-    private float jumpSpeed = 0.4F;
+    private float speed = 0.1F;
+    private float jumpSpeed = 0.32F;
 
     private Gun primary;
     private Gun secondary;
@@ -18,13 +20,13 @@ public class Player extends Entity {
     @Override
     public void init() {
 
-        x = 200;
-        y = 600;
+        textureBox.pos.set(200, 200);
+        textureBox.size.set(16, 16);
 
-        w = 16;
-        h = 16;
+        collider.pos.set(200 + 4, 200 + 4);
+        collider.size.set(9, 12);
 
-        image = Resources.getSprite("player/pluto/unarmed/still", 0, 0);
+        setImage(Resources.getSprite("player/pluto/unarmed/still", 0, 0));
 
         addAnimation("unarmed/idle", new Animation(Resources.getSpriteSheet("player/pluto/unarmed/idle"), 500));
         addAnimation("unarmed/jump", new Animation(Resources.getSpriteSheet("player/pluto/unarmed/jump"), 250));
@@ -38,17 +40,12 @@ public class Player extends Entity {
 
         Input input = container.getInput();
 
-        vx = 0;
+        vel.x = 0;
 
-        if (input.isKeyDown(Input.KEY_A)) vx -= speed;
-        if (input.isKeyDown(Input.KEY_D)) vx += speed;
+        if (input.isKeyDown(Input.KEY_A)) vel.x -= speed;
+        if (input.isKeyDown(Input.KEY_D)) vel.x += speed;
 
-        if (input.isKeyDown(Input.KEY_SPACE) && grounded) {
-
-            vy = -jumpSpeed;
-            grounded = false;
-
-        }
+        if (input.isKeyDown(Input.KEY_SPACE) && canJump()) vel.y = -jumpSpeed;
 
         super.update(container, delta);
 
@@ -69,24 +66,18 @@ public class Player extends Entity {
     }
 
     @Override
-    public void setAnimation(String anim) {
-
-        super.setAnimation(gunTextureName() + "/" + anim);
-
-    }
+    public void setAnimation(String anim) { super.setAnimation(gunTextureName() + "/" + anim); }
 
     @Override
     public void updateAnimation() {
 
-        System.out.println(grounded);
-
-        if (!grounded) {
+        if (!canJump()) {
 
             setAnimation("jump");
 
         } else {
 
-            if (vx != 0) {
+            if (vel.x != 0) {
 
                 setAnimation("run");
 

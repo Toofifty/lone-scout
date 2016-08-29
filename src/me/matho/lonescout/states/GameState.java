@@ -1,8 +1,8 @@
 package me.matho.lonescout.states;
 
 import me.matho.lonescout.client.Resources;
-import me.matho.lonescout.entity.Entity;
-import me.matho.lonescout.entity.Player;
+import me.matho.lonescout.sprite.entity.Entity;
+import me.matho.lonescout.sprite.entity.Player;
 import me.matho.lonescout.gui.Overlay;
 import me.matho.lonescout.util.Camera;
 import me.matho.lonescout.world.World;

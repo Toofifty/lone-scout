@@ -1,39 +1,67 @@
 package me.matho.lonescout.util;
 
+import org.newdawn.slick.geom.Vector2f;
+
 /**
  * Created by alex on 21/08/2016.
  */
 public class Box {
 
-    protected int x, y;
-    protected int w, h;
-    protected float vx, vy;
-
-    public Box() {
-
-    }
+    public Vector2f pos;
+    public Vector2f size;
 
     public Box(int x, int y, int w, int h) {
 
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
+        pos = new Vector2f(x, y);
+        size = new Vector2f(w, h);
 
-        vx = 0;
-        vy = 0;
+    }
+
+    public Box(Vector2f pos, Vector2f size) {
+
+        this.pos = pos;
+        this.size = size;
+
+    }
+
+    public Box copy() { return new Box(pos.copy(), size.copy()); }
+
+    public void move(float x, float y) {
+
+        move(new Vector2f(x, y));
+
+    }
+
+    public void move(Vector2f vector) {
+
+        pos.add(vector);
 
     }
 
     /*
-     * Current position in world space
+     * Current side positions in world space
      */
-    public int left()   { return x; }
-    public int right()  { return x + w; }
-    public int top()    { return y; }
-    public int bottom() { return y + h; }
-    public int midX()   { return x + w / 2; }
-    public int midY()   { return y + h / 2; }
+    public int left()   { return (int) (pos.x); }
+    public int right()  { return (int) (pos.x + size.x - 1); }
+    public int top()    { return (int) (pos.y); }
+    public int bottom() { return (int) (pos.y + size.y - 1); }
+    public int midX()   { return (int) (pos.x + size.x / 2 - 1); }
+    public int midY()   { return (int) (pos.y + size.y / 2 - 1); }
+
+    /*
+     * Current point positions in world space
+     */
+    public Vector2f topLeft() { return new Vector2f(pos); }
+    public Vector2f midLeft() { return new Vector2f(left(), midY()); }
+    public Vector2f bottomLeft() { return new Vector2f(left(), bottom()); }
+    public Vector2f topRight() { return new Vector2f(right(), top()); }
+    public Vector2f midRight() { return new Vector2f(right(), midY()); }
+    public Vector2f bottomRight() { return new Vector2f(right(), bottom()); }
+    public Vector2f topMid() { return new Vector2f(midX(), top()); }
+    public Vector2f bottomMid() { return new Vector2f(midX(), bottom()); }
+    public Vector2f midMid() { return new Vector2f(midX(), midY()); }
+    public Vector2f centre() { return midMid(); }
+
 
     /*
      * Current position in screen space (used to interact with cursor, GUI)
@@ -44,16 +72,6 @@ public class Box {
     public int sBottom() { return bottom() + (int) Camera.offsetY(); }
     public int sMidX()   { return midX() + (int) Camera.offsetX(); }
     public int sMidY()   { return midY() + (int) Camera.offsetY(); }
-
-    /*
-     * Predicted values for the next frame (using delta)
-     */
-    public float nLeft(int d)   { return left() + vx * d; }
-    public float nRight(int d)  { return right() + vx * d; }
-    public float nTop(int d)    { return top() + vy * d; }
-    public float nBottom(int d) { return bottom() + vy * d; }
-    public float nMidX(int d)   { return midX() + vx * d; }
-    public float nMidY(int d)   { return midY() + vy * d; }
 
     public boolean colliding(Box other) {
 

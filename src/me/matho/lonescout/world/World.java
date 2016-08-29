@@ -4,6 +4,7 @@ import me.matho.lonescout.client.Resources;
 import me.matho.lonescout.client.Window;
 import me.matho.lonescout.util.Camera;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.geom.Vector2f;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -261,6 +262,26 @@ public class World {
     public static int getHeight() {
 
         return maps[1].getHeight() * Tile.SIZE;
+
+    }
+
+    /**
+     * Test a list of points for a collision on the map.
+     *
+     * Use a list down one edge of a sprite to test if that side collides.
+     *
+     * @param points
+     * @return
+     */
+    public static boolean testEdge(Vector2f... points) {
+
+        for (Vector2f point : points) {
+
+            if (colliding(point.x, point.y)) return true;
+
+        }
+
+        return false;
 
     }
 

@@ -1,6 +1,6 @@
 package me.matho.lonescout.gui;
 
-import me.matho.lonescout.entity.Entity;
+import me.matho.lonescout.sprite.entity.Entity;
 import me.matho.lonescout.states.GameState;
 import me.matho.lonescout.util.Camera;
 import org.newdawn.slick.GameContainer;
@@ -38,7 +38,7 @@ public class Overlay {
 
         for (Entity entity : game.getEntities()) {
 
-            if (entity.containsScreenPoint(x, y)) {
+            if (entity.collider.containsScreenPoint(x, y)) {
 
                 this.x = x + 8;
                 this.y = y + 8;
