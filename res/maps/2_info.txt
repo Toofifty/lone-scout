@@ -16,4 +16,4 @@
 
 !def 0: black(0, 0)
 
-!def #: &cave(0, 3)
+!def #: &cave(0, 4)

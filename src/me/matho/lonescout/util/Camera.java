@@ -11,9 +11,9 @@ public class Camera {
 
     private Entity target;
     private static float ox, oy;
-    private static int scale = 6;
+    private static int scale = 2;
 
-    private int cameraSmoothing = 10;
+    private int cameraSmoothing = 20;
 
     public Camera(Entity target) {
 
@@ -33,20 +33,20 @@ public class Camera {
         ty = Math.min(0, ty);
         ty = Math.max(Window.HEIGHT / scale - World.getHeight(), ty);
 
-        ox = (int) ((cameraSmoothing - 1) * ox + tx) / cameraSmoothing;
-        oy = (int) ((cameraSmoothing - 1) * oy + ty) / cameraSmoothing;
+        ox = ((cameraSmoothing - 1) * ox + tx) / cameraSmoothing;
+        oy = ((cameraSmoothing - 1) * oy + ty) / cameraSmoothing;
 
     }
 
-    public static float offsetX() {
+    public static int offsetX() {
 
-        return ox;
+        return (int) ox;
 
     }
 
-    public static float offsetY() {
+    public static int offsetY() {
 
-        return oy;
+        return (int) oy;
 
     }
 

@@ -20,7 +20,7 @@ public class Gun {
 
     private boolean canHold;
 
-    private static Gun generate(int playerLevel) {
+    public static Gun generate(int playerLevel) {
 
         final GunType type = GunType.values()[(int) (Math.random()) * GunType.values().length];
         return new Gun(type, generateName(), playerLevel, generateMagSize(type, playerLevel),
@@ -87,6 +87,12 @@ public class Gun {
     public String getTextureName() {
 
         return type.texname;
+
+    }
+
+    public String getName() {
+
+        return name;
 
     }
 
